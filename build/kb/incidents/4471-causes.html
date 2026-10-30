@@ -2,19 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link href="../../_app/immutable/entry/start.CnmqnKtH.js" rel="modulepreload">
+    <link href="../../_app/immutable/entry/start.tnm24QAu.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/DLPHJf5b.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/DJCmud_L.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/zSwf-XEo.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/B3ck760V.js" rel="modulepreload">
-		<link href="../../_app/immutable/entry/app.Djuv_0sX.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.0v5CVKhY.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BnpOIMme.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BG5v0sKB.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/DzrvIRbX.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/CyMa8FXv.js" rel="modulepreload">
 		<link href="../../_app/immutable/nodes/0.DjykM_qP.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/DVJ5pYx9.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/5.B34KnzU5.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/D1PStoUp.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.upgxkfRJ.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BCC5jky4.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/6F5Jptlk.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BeNqf_tZ.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/0CSW6DJc.js" rel="modulepreload">
@@ -31,7 +31,7 @@ share one cause. They split into two problems, and only the first one is fixed.<
 halves need a second look: the parser fix covers one problem of two, and three tenants
 still run booking-v3.<!----></aside><!----> <h2>Causes, computed from the data</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>The cause comes from the <strong>tenant</strong>: its locale and the booking form it runs. It does not
 come from intake’s tag, which is a guess from the reporter’s browser. Intake tagged 23
-parser reports as <code>hint</code> and 15 hint reports as <code>parser</code>.</p> <h2>The two problems</h2> <table><thead><tr><th>problem</th><th align="right">reports</th><th>ticket</th></tr></thead><tbody><tr><td>Shared parser reads every date month-first</td><td align="right">379</td><td><a href="https://github.com/piotrczarnak/mega/issues/73" rel="nofollow">#73</a></td></tr><tr><td>booking-v3 form hints MM/DD/YYYY to day-first tenants</td><td align="right">33</td><td><a href="https://github.com/piotrczarnak/mega/issues/74" rel="nofollow">#74</a></td></tr></tbody></table> <p>379 + 33 = 412.</p> <h3>1. Parser, 379 reports</h3> <p>The shared parser reads every date month first, so day-first tenants get flipped dates. It
+parser reports as <code>hint</code> and 15 hint reports as <code>parser</code>.</p> <h2>The two problems</h2> <table><thead><tr><th>problem</th><th align="right">reports</th><th>ticket</th></tr></thead><tbody><tr><td>Shared parser reads every date month-first</td><td align="right">379</td><td><a href="https://github.com/piotrczarnak/mega-4471/issues/1" rel="nofollow">#1</a></td></tr><tr><td>booking-v3 form hints MM/DD/YYYY to day-first tenants</td><td align="right">33</td><td><a href="https://github.com/piotrczarnak/mega-4471/issues/2" rel="nofollow">#2</a></td></tr></tbody></table> <p>379 + 33 = 412.</p> <h3>1. Parser, 379 reports</h3> <p>The shared parser reads every date month first, so day-first tenants get flipped dates. It
 hit all 11 day-first tenants, through the app, email and the form. The desk fix <code>fix(dates): parse dd/mm for eu locales</code> addresses this problem.</p> <p>Five of these reports (R-41202, R-41209, R-41236, R-41344, R-41620) read as a one-day move
 rather than a month flip. They are counted here, where they are filed, and footnoted.</p> <h3>2. Form hint, 33 reports</h3> <p>booking-v3 prints a <code>MM/DD/YYYY</code> hint. People type what the hint says and the form reads it
 day first. Only tenants on booking-v3 with a day-first locale are affected: alder.physio
@@ -40,15 +40,15 @@ three tenants still run booking-v3. The parser fix does not change what the hint
 			
 			<script>
 				{
-					__sveltekit_1nb8ipr = {
+					__sveltekit_1krqp15 = {
 						base: new URL("../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.CnmqnKtH.js"),
-						import("../../_app/immutable/entry/app.Djuv_0sX.js")
+						import("../../_app/immutable/entry/start.tnm24QAu.js"),
+						import("../../_app/immutable/entry/app.0v5CVKhY.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],

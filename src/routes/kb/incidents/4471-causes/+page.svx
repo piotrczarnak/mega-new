@@ -35,8 +35,8 @@ parser reports as `hint` and 15 hint reports as `parser`.
 
 | problem | reports | ticket |
 | --- | ---: | --- |
-| Shared parser reads every date month-first | 379 | [#73](https://github.com/piotrczarnak/mega/issues/73) |
-| booking-v3 form hints MM/DD/YYYY to day-first tenants | 33 | [#74](https://github.com/piotrczarnak/mega/issues/74) |
+| Shared parser reads every date month-first | 379 | [#1](https://github.com/piotrczarnak/mega-4471/issues/1) |
+| booking-v3 form hints MM/DD/YYYY to day-first tenants | 33 | [#2](https://github.com/piotrczarnak/mega-4471/issues/2) |
 
 379 + 33 = 412.
 
